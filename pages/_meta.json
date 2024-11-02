@@ -3,13 +3,13 @@
   "economics": "EJU经济大纲",
   "politics": "EJU政治大纲", 
   "about": {
-    "title": "About",
+    "title": "关于我",
     "type": "page"
   },
   "contact": {
-    "title": "Contact ↗",
+    "title": "联系我 ↗",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
+    "href": "https://cdn.jsdelivr.net/gh/bronyowl/typopicbed@main/img/image-20241103014614445.png",
     "newWindow": true
   }
 }
