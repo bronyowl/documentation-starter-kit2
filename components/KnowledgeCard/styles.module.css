@@ -1,0 +1,144 @@
+/* src/components/KnowledgeCard/styles.module.css */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  margin: 20px 0;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.category {
+  background: #e3f2fd;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.9em;
+  color: #1976d2;
+}
+
+.frequency {
+  background: #fff3e0;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.9em;
+  color: #f57c00;
+}
+
+.relatedConcepts {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.basicInfo {
+  background: #f5f5f5;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.expandButton {
+  background: #2196f3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  align-self: center;
+}
+
+.expandButton:hover {
+  background: #1976d2;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionTitle {
+  color: #1976d2;
+  margin-bottom: 16px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.subSectionTitle {
+  color: #333;
+  margin: 12px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.theoreticalSection,
+.practicalSection,
+.historySection,
+.chartSection,
+.reviewSection {
+  background: #fafafa;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.timelineEvent {
+  display: flex;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.timelineDate {
+  min-width: 100px;
+  font-weight: bold;
+  color: #1976d2;
+}
+
+.formulas {
+  background: #e3f2fd;
+  padding: 16px;
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+.listItem {
+  margin: 4px 0;
+}
+
+.chartContent {
+  overflow-x: auto;
+}
