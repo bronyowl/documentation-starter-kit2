@@ -1,0 +1,24 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .sortButton {
+    padding: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .sortButton:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .table td,
+  .table th {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
