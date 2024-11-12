@@ -22,7 +22,6 @@ export default function SortableTable({ data: initialData }: { data: WordData[] 
   })
 
   const handleSort = (key: keyof WordData) => {
-    // 不对number和translation进行排序
     if (key === 'translation' || key === 'number') return
 
     let direction: 'asc' | 'desc' = 'asc'
@@ -53,6 +52,17 @@ export default function SortableTable({ data: initialData }: { data: WordData[] 
     setSortConfig({ key, direction })
   }
 
+  const speak = (text: string) => {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(text)
+      utterance.lang = 'en-US' // 设置语言为英语
+      utterance.rate = 0.8 // 设置语速
+      window.speechSynthesis.speak(utterance)
+    } else {
+      console.log('浏览器不支持语音合成')
+    }
+  }
+
   return (
     <table className={styles.table}>
       <thead>
@@ -74,6 +84,7 @@ export default function SortableTable({ data: initialData }: { data: WordData[] 
             </button>
           </th>
           <th>中文翻译</th>
+          <th>发音</th>
         </tr>
       </thead>
       <tbody>
@@ -84,6 +95,15 @@ export default function SortableTable({ data: initialData }: { data: WordData[] 
             <td>{item.frequency}</td>
             <td>{item.level}</td>
             <td>{item.translation}</td>
+            <td>
+              <button 
+                className={styles.audioButton}
+                onClick={() => speak(item.word)}
+                aria-label={`Listen to ${item.word}`}
+              >
+                🔊
+              </button>
+            </td>
           </tr>
         ))}
       </tbody>
