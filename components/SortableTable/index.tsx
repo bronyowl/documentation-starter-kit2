@@ -41,9 +41,12 @@ export default function SortableTable({ data: initialData }: { data: WordData[] 
           : b.frequency - a.frequency
       }
       if (key === 'level') {
-        return direction === 'asc'
-          ? a.level.localeCompare(b.level)
-          : b.level.localeCompare(a.level)
+        // 修改level的排序逻辑
+        const levelOrder = {
+          '中级': direction === 'asc' ? 0 : 1,
+          '中高级': direction === 'asc' ? 1 : 0
+        }
+        return levelOrder[a.level] - levelOrder[b.level]
       }
       return 0
     })
@@ -55,8 +58,8 @@ export default function SortableTable({ data: initialData }: { data: WordData[] 
   const speak = (text: string) => {
     if ('speechSynthesis' in window) {
       const utterance = new SpeechSynthesisUtterance(text)
-      utterance.lang = 'en-US' // 设置语言为英语
-      utterance.rate = 0.8 // 设置语速
+      utterance.lang = 'en-US'
+      utterance.rate = 0.8
       window.speechSynthesis.speak(utterance)
     } else {
       console.log('浏览器不支持语音合成')
