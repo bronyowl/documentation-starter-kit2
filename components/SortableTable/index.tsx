@@ -5,7 +5,7 @@ interface WordData {
   number: number
   word: string
   frequency: number
-  level: '中级' | '中高级'
+  difficulty_score: number
   translation: string
 }
 
@@ -40,13 +40,10 @@ export default function SortableTable({ data: initialData }: { data: WordData[] 
           ? a.frequency - b.frequency
           : b.frequency - a.frequency
       }
-      if (key === 'level') {
-        // 修改level的排序逻辑
-        const levelOrder = {
-          '中级': direction === 'asc' ? 0 : 1,
-          '中高级': direction === 'asc' ? 1 : 0
-        }
-        return levelOrder[a.level] - levelOrder[b.level]
+      if (key === 'difficulty_score') {
+        return direction === 'asc'
+          ? a.difficulty_score - b.difficulty_score
+          : b.difficulty_score - a.difficulty_score
       }
       return 0
     })
@@ -66,6 +63,11 @@ export default function SortableTable({ data: initialData }: { data: WordData[] 
     }
   }
 
+  // 将难度分数格式化为整数
+  const formatDifficultyScore = (score: number): string => {
+    return Math.round(score).toString()
+  }
+
   return (
     <table className={styles.table}>
       <thead>
@@ -82,8 +84,8 @@ export default function SortableTable({ data: initialData }: { data: WordData[] 
             </button>
           </th>
           <th>
-            <button className={styles.sortButton} onClick={() => handleSort('level')}>
-              难度 {sortConfig.key === 'level' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+            <button className={styles.sortButton} onClick={() => handleSort('difficulty_score')}>
+              难度分数 {sortConfig.key === 'difficulty_score' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
             </button>
           </th>
           <th>中文翻译</th>
@@ -96,7 +98,7 @@ export default function SortableTable({ data: initialData }: { data: WordData[] 
             <td>{item.number}</td>
             <td>{item.word}</td>
             <td>{item.frequency}</td>
-            <td>{item.level}</td>
+            <td>{formatDifficultyScore(item.difficulty_score)}</td>
             <td>{item.translation}</td>
             <td>
               <button 
